@@ -1,0 +1,17 @@
+WS=1
+GAG=2
+OLD=3
+YAG=4
+BETA=5
+CRU=6
+PERIOT=7
+COMMA=8
+EXCLAM=9
+'gag'=2
+'old'=3
+'yag'=4
+'beta'=5
+'cru'=6
+'.'=7
+','=8
+'!'=9
