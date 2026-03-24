@@ -1,4 +1,4 @@
-lexer grammar exemplo1;
+lexer grammar gramatica1;
 
 WS : [ \t\n]+ -> skip ;
 HELLO : 'Hello' ;

@@ -6,7 +6,11 @@ JAVA=java
 
 # ROOT ´e a raiz dos diret´orios com todos os roteiros de laborat´orios
 YEAR=$(shell pwd | grep -o ’20..-.’)
-ROOT=/home/rtgomes/Documents/compilers
+# lab grad
+# ROOT=/home/rtgomes/Documents/compilers
+
+# casa
+ROOT=/home/tog/github/compilers/lab01
 
 # Caminho para o JAR do ANTLR em labs/tools
 ANTLR_PATH=$(ROOT)/tools/antlr-4.13.2-complete.jar
@@ -20,8 +24,8 @@ ANTLR4=$(JAVA) -jar $(ANTLR_PATH)
 # Configurac¸˜ao do ambiente de teste do ANTLR
 GRUN=$(JAVA) $(CLASS_PATH_OPTION) org.antlr.v4.gui.TestRig
 
-# Nome da gram´atica
-GRAMMAR_NAME=entrada
+# Nome da gramática
+GRAMMAR_NAME=gramatica4
 
 # Diret´orio para aonde v˜ao os arquivos gerados
 GEN_PATH=lexer
