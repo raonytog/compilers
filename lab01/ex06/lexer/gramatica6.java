@@ -1,4 +1,4 @@
-// Generated from /home/rtgomes/Documents/compilers/lab01/gramatica4.g by ANTLR 4.13.1
+// Generated from gramatica6.g by ANTLR 4.13.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -9,14 +9,14 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
-public class gramatica4 extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
+public class gramatica6 extends Lexer {
+	static { RuntimeMetaData.checkVersion("4.13.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		LOWERCASE=1;
+		WS=1, LETRA=2, DIGITO=3, SEMICOLON=4, HYPHEN=5, PLACA=6;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -27,19 +27,20 @@ public class gramatica4 extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"LOWERCASE", "UPPERCASE"
+			"WS", "LETRA", "DIGITO", "SEMICOLON", "HYPHEN", "PLACA"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
+			null, null, null, null, "';'", "'-'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "LOWERCASE"
+			null, "WS", "LETRA", "DIGITO", "SEMICOLON", "HYPHEN", "PLACA"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -77,13 +78,13 @@ public class gramatica4 extends Lexer {
 	}
 
 
-	public gramatica4(CharStream input) {
+	public gramatica6(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "gramatica4.g"; }
+	public String getGrammarFileName() { return "gramatica6.g"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -101,15 +102,33 @@ public class gramatica4 extends Lexer {
 	public ATN getATN() { return _ATN; }
 
 	public static final String _serializedATN =
-		"\u0004\u0000\u0001\u000b\u0006\uffff\uffff\u0002\u0000\u0007\u0000\u0002"+
-		"\u0001\u0007\u0001\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0000\u0000\u0002\u0001\u0001\u0003\u0000\u0001\u0000"+
-		"\u0002\u0001\u0000az\u0001\u0000AZ\n\u0000\u0001\u0001\u0000\u0000\u0000"+
-		"\u0000\u0003\u0001\u0000\u0000\u0000\u0001\u0005\u0001\u0000\u0000\u0000"+
-		"\u0003\u0007\u0001\u0000\u0000\u0000\u0005\u0006\u0007\u0000\u0000\u0000"+
-		"\u0006\u0002\u0001\u0000\u0000\u0000\u0007\b\u0007\u0001\u0000\u0000\b"+
-		"\t\u0001\u0000\u0000\u0000\t\n\u0006\u0001\u0000\u0000\n\u0004\u0001\u0000"+
-		"\u0000\u0000\u0001\u0000\u0001\u0007\u0001\u0000";
+		"\u0004\u0000\u0006%\u0006\uffff\uffff\u0002\u0000\u0007\u0000\u0002\u0001"+
+		"\u0007\u0001\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004"+
+		"\u0007\u0004\u0002\u0005\u0007\u0005\u0001\u0000\u0004\u0000\u000f\b\u0000"+
+		"\u000b\u0000\f\u0000\u0010\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001"+
+		"\u0001\u0002\u0001\u0002\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004"+
+		"\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005"+
+		"\u0001\u0005\u0001\u0005\u0001\u0005\u0000\u0000\u0006\u0001\u0001\u0003"+
+		"\u0002\u0005\u0003\u0007\u0004\t\u0005\u000b\u0006\u0001\u0000\u0003\u0002"+
+		"\u0000\t\n  \u0001\u0000AZ\u0001\u000009%\u0000\u0001\u0001\u0000\u0000"+
+		"\u0000\u0000\u0003\u0001\u0000\u0000\u0000\u0000\u0005\u0001\u0000\u0000"+
+		"\u0000\u0000\u0007\u0001\u0000\u0000\u0000\u0000\t\u0001\u0000\u0000\u0000"+
+		"\u0000\u000b\u0001\u0000\u0000\u0000\u0001\u000e\u0001\u0000\u0000\u0000"+
+		"\u0003\u0014\u0001\u0000\u0000\u0000\u0005\u0016\u0001\u0000\u0000\u0000"+
+		"\u0007\u0018\u0001\u0000\u0000\u0000\t\u001a\u0001\u0000\u0000\u0000\u000b"+
+		"\u001c\u0001\u0000\u0000\u0000\r\u000f\u0007\u0000\u0000\u0000\u000e\r"+
+		"\u0001\u0000\u0000\u0000\u000f\u0010\u0001\u0000\u0000\u0000\u0010\u000e"+
+		"\u0001\u0000\u0000\u0000\u0010\u0011\u0001\u0000\u0000\u0000\u0011\u0012"+
+		"\u0001\u0000\u0000\u0000\u0012\u0013\u0006\u0000\u0000\u0000\u0013\u0002"+
+		"\u0001\u0000\u0000\u0000\u0014\u0015\u0007\u0001\u0000\u0000\u0015\u0004"+
+		"\u0001\u0000\u0000\u0000\u0016\u0017\u0007\u0002\u0000\u0000\u0017\u0006"+
+		"\u0001\u0000\u0000\u0000\u0018\u0019\u0005;\u0000\u0000\u0019\b\u0001"+
+		"\u0000\u0000\u0000\u001a\u001b\u0005-\u0000\u0000\u001b\n\u0001\u0000"+
+		"\u0000\u0000\u001c\u001d\u0003\u0003\u0001\u0000\u001d\u001e\u0003\u0003"+
+		"\u0001\u0000\u001e\u001f\u0003\u0003\u0001\u0000\u001f \u0003\t\u0004"+
+		"\u0000 !\u0003\u0005\u0002\u0000!\"\u0003\u0005\u0002\u0000\"#\u0003\u0005"+
+		"\u0002\u0000#$\u0003\u0005\u0002\u0000$\f\u0001\u0000\u0000\u0000\u0002"+
+		"\u0000\u0010\u0001\u0006\u0000\u0000";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
