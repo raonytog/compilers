@@ -1,4 +1,4 @@
-// Generated from /home/rtgomes/Documents/compilers/lab01/ex06/gramatica6.g by ANTLR 4.13.1
+// Generated from /home/rtgomes/compilers/lab01/ex06/gramatica6.g by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

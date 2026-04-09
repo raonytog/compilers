@@ -16,7 +16,8 @@ public class Exemplo04Parser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		INT_VAL=1, LT=2, GT=3, EQ=4, SEMI=5, WS=6, PARENTESESL=7, PARENTESESR=8;
+		INT_VAL=1, LT=2, GT=3, EQ=4, SEMI=5, WS=6, PARENTESESL=7, PARENTESESR=8, 
+		A=9;
 	public static final int
 		RULE_begin = 0, RULE_expr = 1, RULE_op = 2;
 	private static String[] makeRuleNames() {
@@ -28,13 +29,14 @@ public class Exemplo04Parser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, null, "'<'", "'>'", "'='", "';'", null, "'('", "')'"
+			null, null, "'<'", "'>'", "'='", "';'", null, "'('", "')'", "'a'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "INT_VAL", "LT", "GT", "EQ", "SEMI", "WS", "PARENTESESL", "PARENTESESR"
+			null, "INT_VAL", "LT", "GT", "EQ", "SEMI", "WS", "PARENTESESL", "PARENTESESR", 
+			"A"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -122,7 +124,7 @@ public class Exemplo04Parser extends Parser {
 				setState(9); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==INT_VAL );
+			} while ( _la==PARENTESESL || _la==A );
 			}
 		}
 		catch (RecognitionException re) {
@@ -138,14 +140,12 @@ public class Exemplo04Parser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ExprContext extends ParserRuleContext {
-		public List<TerminalNode> INT_VAL() { return getTokens(Exemplo04Parser.INT_VAL); }
-		public TerminalNode INT_VAL(int i) {
-			return getToken(Exemplo04Parser.INT_VAL, i);
+		public TerminalNode PARENTESESL() { return getToken(Exemplo04Parser.PARENTESESL, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
 		}
-		public OpContext op() {
-			return getRuleContext(OpContext.class,0);
-		}
-		public TerminalNode SEMI() { return getToken(Exemplo04Parser.SEMI, 0); }
+		public TerminalNode PARENTESESR() { return getToken(Exemplo04Parser.PARENTESESR, 0); }
+		public TerminalNode A() { return getToken(Exemplo04Parser.A, 0); }
 		public ExprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -156,31 +156,29 @@ public class Exemplo04Parser extends Parser {
 		ExprContext _localctx = new ExprContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_expr);
 		try {
-			setState(18);
+			setState(16);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
-			case 1:
+			switch (_input.LA(1)) {
+			case PARENTESESL:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(11);
-				match(INT_VAL);
+				match(PARENTESESL);
 				setState(12);
-				op();
+				expr();
 				setState(13);
-				match(INT_VAL);
-				setState(14);
-				match(SEMI);
+				match(PARENTESESR);
 				}
 				break;
-			case 2:
+			case A:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(16);
-				match(INT_VAL);
-				setState(17);
-				match(SEMI);
+				setState(15);
+				match(A);
 				}
 				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -212,7 +210,7 @@ public class Exemplo04Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(20);
+			setState(18);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 28L) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -236,22 +234,20 @@ public class Exemplo04Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\b\u0017\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\t\u0015\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0001\u0000\u0004\u0000\b\b\u0000\u000b\u0000\f\u0000"+
-		"\t\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0003\u0001\u0013\b\u0001\u0001\u0002\u0001\u0002\u0001\u0002"+
-		"\u0000\u0000\u0003\u0000\u0002\u0004\u0000\u0001\u0001\u0000\u0002\u0004"+
-		"\u0015\u0000\u0007\u0001\u0000\u0000\u0000\u0002\u0012\u0001\u0000\u0000"+
-		"\u0000\u0004\u0014\u0001\u0000\u0000\u0000\u0006\b\u0003\u0002\u0001\u0000"+
-		"\u0007\u0006\u0001\u0000\u0000\u0000\b\t\u0001\u0000\u0000\u0000\t\u0007"+
-		"\u0001\u0000\u0000\u0000\t\n\u0001\u0000\u0000\u0000\n\u0001\u0001\u0000"+
-		"\u0000\u0000\u000b\f\u0005\u0001\u0000\u0000\f\r\u0003\u0004\u0002\u0000"+
-		"\r\u000e\u0005\u0001\u0000\u0000\u000e\u000f\u0005\u0005\u0000\u0000\u000f"+
-		"\u0013\u0001\u0000\u0000\u0000\u0010\u0011\u0005\u0001\u0000\u0000\u0011"+
-		"\u0013\u0005\u0005\u0000\u0000\u0012\u000b\u0001\u0000\u0000\u0000\u0012"+
-		"\u0010\u0001\u0000\u0000\u0000\u0013\u0003\u0001\u0000\u0000\u0000\u0014"+
-		"\u0015\u0007\u0000\u0000\u0000\u0015\u0005\u0001\u0000\u0000\u0000\u0002"+
-		"\t\u0012";
+		"\t\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0003\u0001"+
+		"\u0011\b\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0000\u0000\u0003\u0000"+
+		"\u0002\u0004\u0000\u0001\u0001\u0000\u0002\u0004\u0013\u0000\u0007\u0001"+
+		"\u0000\u0000\u0000\u0002\u0010\u0001\u0000\u0000\u0000\u0004\u0012\u0001"+
+		"\u0000\u0000\u0000\u0006\b\u0003\u0002\u0001\u0000\u0007\u0006\u0001\u0000"+
+		"\u0000\u0000\b\t\u0001\u0000\u0000\u0000\t\u0007\u0001\u0000\u0000\u0000"+
+		"\t\n\u0001\u0000\u0000\u0000\n\u0001\u0001\u0000\u0000\u0000\u000b\f\u0005"+
+		"\u0007\u0000\u0000\f\r\u0003\u0002\u0001\u0000\r\u000e\u0005\b\u0000\u0000"+
+		"\u000e\u0011\u0001\u0000\u0000\u0000\u000f\u0011\u0005\t\u0000\u0000\u0010"+
+		"\u000b\u0001\u0000\u0000\u0000\u0010\u000f\u0001\u0000\u0000\u0000\u0011"+
+		"\u0003\u0001\u0000\u0000\u0000\u0012\u0013\u0007\u0000\u0000\u0000\u0013"+
+		"\u0005\u0001\u0000\u0000\u0000\u0002\t\u0010";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

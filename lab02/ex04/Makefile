@@ -29,7 +29,7 @@ javac:
 	$(JAVAC) $(CLASS_PATH_OPTION) $(GEN_PATH)/*.java
 # Executa o parser. Comando: $ make run FILE=arquivo_de_teste
 run:
-	cd $(GEN_PATH) && $(GRUN) $(GRAMMAR_NAME) begin $(FILE)
+	cd $(GEN_PATH) && $(GRUN) $(GRAMMAR_NAME) begin $(FILE) -gui
 # Remove os arquivos gerados pelo ANTLR
 clean:
 	@rm -rf $(GEN_PATH)
